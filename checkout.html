@@ -1,5 +1,6 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: Arial, sans-serif;
             background-color: #ffe4e6;
@@ -19,6 +21,7 @@
             align-items: center;
             height: 100vh;
         }
+
         nav {
             background-color: #ffccd5;
             padding: 10px;
@@ -29,14 +32,17 @@
             top: 0;
             width: 100%;
         }
+
         nav a {
             color: #333;
             text-decoration: none;
             font-weight: bold;
         }
+
         nav a:hover {
             text-decoration: underline;
         }
+
         .checkout-container {
             width: 700px;
             height: 500px;
@@ -48,25 +54,31 @@
             flex-direction: column;
             justify-content: center;
         }
+
         h1 {
             text-align: center;
             margin-bottom: 20px;
         }
+
         form {
             display: flex;
             flex-direction: column;
         }
+
         label {
             margin-bottom: 10px;
             font-weight: bold;
         }
-        input, select {
+
+        input,
+        select {
             padding: 10px;
             margin-bottom: 20px;
             border: 1px solid #ccc;
             border-radius: 5px;
             width: 100%;
         }
+
         button {
             padding: 15px;
             background-color: #ff99ac;
@@ -75,11 +87,13 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
         button:hover {
             background-color: #ff6681;
         }
     </style>
 </head>
+
 <body>
     <nav>
         <a href="index.html">Home</a>
@@ -107,4 +121,63 @@
         </form>
     </div>
 </body>
+
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="checkout.css">
+</head>
+
+<body>
+    <header class="navbar">
+        <a href="index.html">
+            <img src="logo.png" alt="FloralVibe Logo" class="logo">
+        </a>
+        <nav class="nav-center">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li> <!-- Replaced "Dashboard" with "Contact" -->
+                <li><a href="products.html">Products</a></li> <!-- Added "Products" page link -->
+                <li><a href="review.html">Review</a></li>
+            </ul>
+        </nav>
+        <button class="logout-btn">Logout</button>
+    </header>
+
+    <div class="checkout-container">
+        <h1>Checkout</h1>
+        <form id="checkoutForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required>
+
+            <label for="payment-method">Payment Method:</label>
+            <select id="payment-method" name="payment-method" required>
+                <option value="cash-on-delivery">Cash on Delivery</option>
+                <option value="esewa">eSewa</option>
+                <option value="khalti">Khalti</option>
+            </select>
+
+            <div id="payment-details" style="display: none;">
+                <label for="payment-number">Send to: 9861790119</label>
+                <input type="number" id="payment-amount" name="payment-amount" placeholder="Enter amount" required>
+            </div>
+
+            <button type="submit">Place Order</button>
+        </form>
+    </div>
+
+    <script src="checkout.js"></script>
+</body>
+
 </html>
