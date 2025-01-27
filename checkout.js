@@ -9,9 +9,8 @@ document.getElementById('payment-method').addEventListener('change', function ()
     }
 });
 
-// Optionally, you can add form validation or simulate the payment process here
 document.getElementById('checkoutForm').addEventListener('submit', function (event) {
-    event.preventDefault(); // Prevent form from submitting to demonstrate the process
+    event.preventDefault();
 
     const paymentMethod = document.getElementById('payment-method').value;
     if (paymentMethod === 'esewa' || paymentMethod === 'khalti') {
@@ -22,3 +21,12 @@ document.getElementById('checkoutForm').addEventListener('submit', function (eve
         alert('Order placed successfully (Cash on Delivery).');
     }
 });
+
+document.getElementById('logout-btn').addEventListener('click', function () {
+    const userConfirmed = confirm("Are you sure you want to log out?");
+
+    if (userConfirmed) {
+        window.location.href = "HomePage.html";
+    }
+});
+

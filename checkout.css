@@ -44,7 +44,6 @@ body {
     list-style: none;
     display: flex;
     gap: 40px;
-    /* Reduced space between links for better alignment */
 }
 
 .nav-links a {
@@ -74,7 +73,6 @@ body {
 
 .checkout-container {
     width: 500px;
-    /* Reduced size for checkout box */
     background-color: #fff;
     padding: 30px;
     border-radius: 15px;
@@ -83,7 +81,6 @@ body {
     flex-direction: column;
     justify-content: center;
     margin-top: 100px;
-    /* Added margin to push it down */
 }
 
 h1 {

@@ -55,7 +55,7 @@ h4 {
     margin-bottom: 50px;
 }
 
-.reset-password-form {
+.admin-login-form {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -97,7 +97,7 @@ input {
     cursor: pointer;
 }
 
-.reset-button {
+.login-button {
     margin-top: 20px;
     background-color: #ff99a6;
     color: white;
@@ -109,26 +109,6 @@ input {
     width: 100%;
 }
 
-.reset-button:hover {
+.login-button:hover {
     background-color: #e48894;
-}
-
-.back-to-login {
-    text-align: center;
-    margin-top: 10px;
-}
-
-.back-to-login p {
-    font-size: 0.9rem;
-    color: #333;
-    margin: 0;
-}
-
-.login-link {
-    color: #ee0c27;
-    text-decoration: none;
-}
-
-.login-link:hover {
-    text-decoration: underline;
 }

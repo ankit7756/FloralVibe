@@ -1,36 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FloralVibe</title>
     <link rel="stylesheet" href="HomePage.css">
 </head>
+
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="logo">FLORALVIBE</div>
+    <header class="navbar">
+        <a href="index.html">
+            <img src="logo.png" alt="FloralVibe Logo" class="logo">
+        </a>
+        <nav class="nav-center">
             <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Product</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Review</a></li>
+                <li><a href="HomePage.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
-            <div class="auth-buttons">
-                <button class="btn">Login</button>
-                <button class="btn">Register</button>
-            </div>
         </nav>
+        <div class="auth-buttons">
+            <a href="index.html" class="auth-btn">Sign Up</a>
+            <a href="Login.html" class="auth-btn">Login</a>
+            <a href="AdminLogin.html" class="auth-btn">Admin Login</a>
+        </div>
     </header>
+
+
     <main>
         <section class="hero">
-            <h1>BRING THE BEAUTY & JOY OF FLOWERS <br> INTO YOUR LIFE!!!</h1>
-            <p>Remember us for Fresh, Natural, and Organic Flowers</p>
-            <button class="order-now">Order Now</button>
-            <blockquote>“Life may not be perfect, but your bouquet can be”</blockquote>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1>Bring the Beauty and Joy of Flowers into Your Life</h1>
+                <p>Fresh, Natural, and Organic Flowers for Every Occasion</p>
+                <a href="products.html" class="order-now">Order Now</a>
+                <blockquote>"Life may not be perfect, but your bouquet can be."</blockquote>
+            </div>
         </section>
     </main>
 </body>
-<script src="HomePage.js"></script>
+
 </html>

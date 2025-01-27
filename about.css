@@ -64,11 +64,9 @@ body {
     background-color: #cc529b;
 }
 
-/* Hero Section Styling */
 .hero {
     text-align: center;
     padding: 60px 20px;
-    /* background: linear-gradient(to right, #ffe6f2, #ffcce0); */
     background-color: #ffe6f2;
     margin-bottom: 50px;
     border-radius: 8px;

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New User - Flower Shop Admin</title>
+    <link rel="stylesheet" href="addUser.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h1>Add New User</h1>
+            <div class="flower-decoration left"></div>
+            <div class="flower-decoration right"></div>
+
+            <form id="addUserForm">
+                <div class="form-group">
+                    <label for="userId">User ID</label>
+                    <input type="text" id="userId" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea id="address" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="contact">Contact Number</label>
+                    <input type="tel" id="contact" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="role">Role</label>
+                    <select id="role" required>
+                        <option value="">Select Role</option>
+                        <option value="Admin">Admin</option>
+                        <option value="Customer">Customer</option>
+                        <option value="Staff">Staff</option>
+                    </select>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="btn submit">Add User</button>
+                    <a href="dashboard.html" class="btn cancel">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="addUser.js"></script>
+</body>
+
+</html>
