@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Reviews</title>
+    <link rel="stylesheet" href="review.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header class="navbar">
+        <a href="index.html">
+            <img src="logo.png" alt="FloralVibe Logo" class="logo">
+        </a>
+        <nav class="nav-center">
+            <ul class="nav-links">
+                <li><a href="HomePage.html">Home</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="About.html">About</a></li>
+            </ul>
+        </nav>
+        <button class="logout-btn" id="logout-btn">Logout</button>
+
+    </header>
+
+    <div class="review-container">
+        <h1>Share Your Experience</h1>
+        <p class="subtitle">Your feedback helps us deliver the best flowers!</p>
+
+        <div class="product-review">
+            <div class="product-card">
+                <img src="Hpage.jpg" alt="Product" class="product-image">
+                <div class="product-details">
+                    <h2>Rose Bouquet</h2>
+                    <p>Elegant and fresh roses for any occasion.</p>
+
+                    <div class="review-form">
+                        <label for="rating">Rating:</label>
+                        <div class="star-rating">
+                            <i class="fas fa-star" data-rating="1"></i>
+                            <i class="fas fa-star" data-rating="2"></i>
+                            <i class="fas fa-star" data-rating="3"></i>
+                            <i class="fas fa-star" data-rating="4"></i>
+                            <i class="fas fa-star" data-rating="5"></i>
+                        </div>
+                        <textarea placeholder="Write your review here..." rows="4"></textarea>
+                        <button class="submit-btn">Submit Review</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 FloralVibe. All rights reserved.</p>
+    </footer>
+
+    <script src="review.js"></script>
+</body>
+
+</html>

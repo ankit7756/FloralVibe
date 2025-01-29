@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product View</title>
+    <link rel="stylesheet" href="products.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header class="navbar">
+        <a href="index.html">
+            <img src="logo.png" alt="FloralVibe Logo" class="logo">
+        </a>
+        <nav class="nav-center">
+            <ul class="nav-links">
+                <li><a href="HomePage.html">Home</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="review.html">Review</a></li>
+            </ul>
+        </nav>
+        <div class="cart-wishlist-icons">
+            <a href="cart.html" title="Cart"><i class="fas fa-shopping-cart"></i></a>
+            <a href="wishlist.html" title="Wishlist"><i class="fas fa-heart"></i></a>
+            <a href="notification.html" title="Notifications"><i class="fas fa-bell"></i></a>
+        </div>
+        <button class="logout-btn" id="logout-btn">Logout</button>
+    </header>
+
+    <input type="text" id="search-bar" placeholder="Search flowers..." oninput="filterProducts()">
+
+    <div class="cart-container" id="cart-container"></div>
+
+    <script src="products.js"></script>
+</body>
+
+</html>
