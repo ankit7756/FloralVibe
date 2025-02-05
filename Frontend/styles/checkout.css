@@ -15,6 +15,8 @@ body {
     flex-direction: column;
 }
 
+/* Navbar part */
+
 .navbar {
     display: flex;
     justify-content: space-between;
