@@ -10,6 +10,8 @@ body {
   line-height: 1.6;
 }
 
+/* Navbar part */
+
 .navbar {
   display: flex;
   justify-content: space-between;
