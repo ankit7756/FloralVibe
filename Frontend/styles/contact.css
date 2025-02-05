@@ -11,6 +11,8 @@ body {
     color: #333;
 }
 
+/* Navbar part */
+
 .navbar {
     display: flex;
     justify-content: space-between;
