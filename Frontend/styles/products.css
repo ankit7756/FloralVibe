@@ -10,6 +10,8 @@ body {
     padding: 15px;
 }
 
+/* Navbar part */
+
 .navbar {
     display: flex;
     justify-content: space-between;
