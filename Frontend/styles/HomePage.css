@@ -10,6 +10,8 @@ body {
   line-height: 1.6;
 }
 
+/* Navbar part */
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -76,7 +78,7 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: url('homePage.jpg') no-repeat center center/cover;
+  background: url('../assets/homePage.jpg') no-repeat center center/cover;
   height: calc(100vh - 80px);
   padding: 20px;
   color: #fff;
