@@ -78,14 +78,6 @@ const login = async (req, res) => {
     }
 };
 
-// const verifyToken = async (req, res) => {
-//     try {
-//         res.json({ valid: true });
-//     } catch (error) {
-//         res.status(401).json({ message: 'Invalid token' });
-//     }
-// };
-
 const verifyToken = async (req, res) => {
     try {
         // If middleware passed, token is valid
@@ -107,4 +99,37 @@ const verifyToken = async (req, res) => {
     }
 };
 
-module.exports = { register, login, verifyToken };
+const resetPassword = async (req, res) => {
+    try {
+        const { email, newPassword, confirmPassword } = req.body;
+
+        // Check if passwords match
+        if (newPassword !== confirmPassword) {
+            return res.status(400).json({ message: 'Passwords do not match' });
+        }
+
+        // Find user by email
+        const user = await User.findOne({ where: { email } });
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        // Hash the new password before saving
+        const bcrypt = require('bcryptjs');
+        const salt = await bcrypt.genSalt(10);
+        user.password = await bcrypt.hash(newPassword, salt);
+
+        // Save the updated user
+        await user.save();
+
+        res.json({ message: 'Password reset successfully' });
+    } catch (error) {
+        console.error('Reset password error:', error);
+        res.status(500).json({ message: 'Error resetting password', error: error.message });
+    }
+};
+
+// Update the exports
+module.exports = { register, login, verifyToken, resetPassword };
+
+// module.exports = { register, login, verifyToken };

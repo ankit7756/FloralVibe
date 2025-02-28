@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -37,6 +37,54 @@
       </form>
       <p class="login-link"><a href="ResetPassword.html">Forgot Password?</a></p>
       <p class="login-link">Don’t have an account? <a href="index.html">Register Now</a></p>
+    </div>
+  </div>
+  <script src="../scripts/Login.js"></script>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Flower Shop</title>
+  <link rel="stylesheet" href="../styles/Login.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+</head>
+
+<body>
+  <div class="login-container">
+    <div class="login-card">
+      <div class="image-section">
+        <img src="../assets/Carnation.jpg" alt="Flowers" class="flowers-image">
+      </div>
+      <div class="form-section">
+        <h2>Welcome back</h2>
+        <h4>Please enter your details</h4>
+        <form class="login-form">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="password-wrapper">
+              <input type="password" id="password" name="password" placeholder="Enter your password" required>
+              <span class="toggle-password" onclick="togglePassword('password')">👁️</span>
+            </div>
+          </div>
+
+          <p class="forgot-password"><a href="ResetPassword.html">Forgot Password?</a></p>
+
+          <button type="submit" class="login-button">Login</button>
+        </form>
+        <p class="register-link">Don't have an account? <a href="index.html">Register Now</a></p>
+      </div>
     </div>
   </div>
   <script src="../scripts/Login.js"></script>
