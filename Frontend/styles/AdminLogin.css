@@ -1,58 +1,68 @@
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    padding: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
     background-color: #fcdfe5;
+    min-height: 100vh;
+}
+
+.login-container {
+    width: 100%;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    padding: 30px 15px;
+    box-sizing: border-box;
 }
 
-.container {
+.login-card {
     display: flex;
-    width: 750px;
-    height: 700px;
+    width: 100%;
+    max-width: 800px;
     border-radius: 20px;
     overflow: hidden;
     background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 24px rgba(234, 84, 118, 0.15);
 }
 
 .image-section {
     flex: 1;
+    position: relative;
     background-color: #f9e0e8;
+    display: none;
+    /* Initially hidden on mobile */
 }
 
 .flowers-image {
-    width: 180%;
+    width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
 .form-section {
-    flex: 1.3;
-    padding: 30px;
-    background-color: #ffe6ec;
+    flex: 1.2;
+    padding: 40px 35px;
+    background-color: #fff5f7;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-}
-
-h2,
-h4 {
-    margin: 0;
-    color: #333;
-    text-align: center;
 }
 
 h2 {
-    font-size: 1.9rem;
-    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #333;
+    margin: 0 0 15px 0;
+    text-align: center;
+    font-weight: 600;
 }
 
 h4 {
     font-size: 1.1rem;
-    margin-bottom: 50px;
+    color: #666;
+    font-weight: 400;
+    margin: 0 0 40px 0;
+    text-align: center;
 }
 
 .admin-login-form {
@@ -62,53 +72,119 @@ h4 {
 }
 
 .form-group {
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 label {
-    font-size: 16px;
-    color: #070707;
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
+    font-size: 15px;
+    color: #444;
+    font-weight: 500;
 }
 
 input {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background-color: #f9f9f9;
+}
+
+input:focus {
+    outline: none;
+    border-color: #ff99a6;
+    box-shadow: 0 0 0 3px rgba(255, 153, 166, 0.2);
+}
+
+input::placeholder {
+    color: #aaa;
 }
 
 .password-wrapper {
     position: relative;
 }
 
-.password-wrapper input {
-    padding-right: 40px;
-}
-
 .toggle-password {
     position: absolute;
-    right: 10px;
+    right: 12px;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
+    color: #777;
+    font-size: 1.2rem;
 }
 
 .login-button {
-    margin-top: 20px;
-    background-color: #ff99a6;
+    margin-top: 15px;
+    background-color: #ff7a90;
     color: white;
-    padding: 10px;
+    padding: 14px;
     font-size: 1rem;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
-    width: 100%;
+    font-weight: 600;
+    transition: background-color 0.2s, transform 0.1s;
+    box-shadow: 0 4px 8px rgba(255, 122, 144, 0.3);
 }
 
 .login-button:hover {
-    background-color: #e48894;
+    background-color: #ff6683;
+}
+
+.login-button:active {
+    transform: translateY(1px);
+}
+
+/* Media Queries for Responsiveness */
+@media (min-width: 768px) {
+    .image-section {
+        display: block;
+        /* Show on larger screens */
+    }
+}
+
+@media (max-width: 767px) {
+    .login-card {
+        flex-direction: column;
+        max-width: 400px;
+    }
+
+    .form-section {
+        padding: 30px 25px;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    h4 {
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        padding: 15px 10px;
+    }
+
+    .form-section {
+        padding: 25px 20px;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    h4 {
+        font-size: 0.95rem;
+        margin-bottom: 25px;
+    }
+
+    .login-button {
+        padding: 12px;
+    }
 }

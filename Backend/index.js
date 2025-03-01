@@ -2,7 +2,10 @@ const express = require('express');
 const dotenv = require('dotenv');
 const db = require('./config/database');
 const userRoute = require('./routes/userRoute');
+const productRoute = require('./routes/productRoute');
+const cartRoute = require('./routes/cartRoute');
 const cors = require('cors');
+const wishlistRoute = require('./routes/wishlistRoute');
 
 dotenv.config();
 const app = express();
@@ -13,6 +16,9 @@ app.use(express.json());
 
 // Routes
 app.use('/api/user', userRoute);
+app.use('/api', productRoute);
+app.use('/api/cart', cartRoute);
+app.use('/api', wishlistRoute);
 
 const PORT = process.env.PORT || 4000;
 

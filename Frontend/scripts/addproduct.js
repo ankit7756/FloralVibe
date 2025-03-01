@@ -1,38 +1,29 @@
-function generateProductId() {
-    const prefix = 'P';
-    const randomNum = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
-    return `${prefix}${randomNum}`;
-}
+document.getElementById('addProductForm').addEventListener('submit', async (event) => {
+    event.preventDefault();
 
-document.getElementById('addProductForm').addEventListener('submit', function (e) {
-    e.preventDefault();
+    const formData = new FormData();
+    formData.append('name', document.getElementById('productName').value);
+    formData.append('description', document.getElementById('productDescription').value);
+    formData.append('price', document.getElementById('productPrice').value);
+    formData.append('category', document.getElementById('productCategory').value);
+    formData.append('stockQuantity', document.getElementById('stockQuantity').value);
+    formData.append('productImage', document.getElementById('productImage').files[0]);
 
-    const productImage = document.getElementById('productImage').files[0];
-    const reader = new FileReader();
-
-    reader.onload = function (e) {
-        const newProduct = {
-            id: generateProductId(),
-            name: document.getElementById('productName').value,
-            description: document.getElementById('productDescription').value,
-            price: document.getElementById('productPrice').value,
-            image: e.target.result,
-            category: document.getElementById('productCategory').value,
-            stock: document.getElementById('stockQuantity').value
-        };
-
-        let products = JSON.parse(localStorage.getItem('products')) || [];
-
-        products.push(newProduct);
-
-        localStorage.setItem('products', JSON.stringify(products));
-
-        alert('Product added successfully!');
-
-        window.location.href = 'dashboard.html';
-    };
-
-    if (productImage) {
-        reader.readAsDataURL(productImage);
+    try {
+        const response = await fetch('http://localhost:4000/api/products', {
+            method: 'POST',
+            body: formData
+        });
+        const data = await response.json();
+        if (response.ok) {
+            alert('Product added successfully!');
+            document.getElementById('addProductForm').reset();
+            // Optionally refresh products page
+            window.location.href = '../pages/products.html';
+        } else {
+            alert('Error adding product: ' + data.message);
+        }
+    } catch (error) {
+        alert('Error: ' + error.message);
     }
 });

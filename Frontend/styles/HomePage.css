@@ -378,17 +378,25 @@ blockquote::after {
 }
 
 .collection-img {
-  height: 300px;
-  background-size: cover;
-  background-position: center;
   position: relative;
-  display: flex;
-  align-items: flex-end;
+  width: 100%;
+  padding-top: 100%;
+  overflow: hidden;
   transition: all 0.5s ease;
 }
 
 .collection-img:hover {
   transform: scale(1.05);
+}
+
+.collection-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .collection-overlay {
@@ -589,7 +597,7 @@ footer {
   margin-top: 20px;
 }
 
-.social-icons a {
+.social-icons span {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -602,7 +610,7 @@ footer {
   transition: all 0.3s ease;
 }
 
-.social-icons a:hover {
+.social-icons span:hover {
   background-color: #ff66b3;
   transform: translateY(-3px);
 }
