@@ -43,7 +43,7 @@
                         <p id="total-sales">Loading...</p>
                     </div>
                     <div class="stat-card">
-                        <h3>Orders</h3>
+                        <h3>Total Orders</h3>
                         <p id="total-orders">Loading...</p>
                     </div>
                     <div class="stat-card">
@@ -51,7 +51,7 @@
                         <p id="active-users">Loading...</p>
                     </div>
                     <div class="stat-card">
-                        <h3>Products</h3>
+                        <h3>Total Products</h3>
                         <p id="total-products">Loading...</p>
                     </div>
                 </div>
@@ -61,6 +61,8 @@
                 <h2>Recent Orders</h2>
                 <div class="order-container">
                     <div class="order-card" id="order-1">
+                        <div class="order-image" style="background-image: url('../assets/placeholder-product.jpg');">
+                        </div>
                         <div class="order-info">
                             <p><strong>Order ID:</strong> <span id="order-id-1">Loading...</span></p>
                             <p><strong>Customer:</strong> <span id="customer-1">Loading...</span></p>
@@ -69,6 +71,8 @@
                         </div>
                     </div>
                     <div class="order-card" id="order-2">
+                        <div class="order-image" style="background-image: url('../assets/placeholder-product.jpg');">
+                        </div>
                         <div class="order-info">
                             <p><strong>Order ID:</strong> <span id="order-id-2">Loading...</span></p>
                             <p><strong>Customer:</strong> <span id="customer-2">Loading...</span></p>
@@ -91,12 +95,15 @@
                             <p><strong>ID:</strong> <span id="product-id-1">Loading...</span></p>
                             <p><strong>Name:</strong> <span id="product-name-1">Loading...</span></p>
                             <p><strong>Price:</strong> <span id="product-price-1">Loading...</span></p>
+                            <p><strong>Stock:</strong> <span id="product-stock-1">Loading...</span></p>
+                            <p><strong>Category:</strong> <span id="product-category-1">Loading...</span></p>
                             <div class="actions">
                                 <button class="btn edit-btn">Edit</button>
                                 <button class="btn delete-btn">Delete</button>
                             </div>
                         </div>
                     </div>
+                    <!-- Add more product cards as needed -->
                 </div>
             </section>
 
@@ -121,14 +128,20 @@
                         <div class="review-image" style="background-image: url('../assets/placeholder-review.jpg');">
                         </div>
                         <div class="review-content">
-                            <p><span id="review-text-1">Loading...</span></p>
+                            <p><strong>Product:</strong> <span id="review-product-name-1">Loading...</span></p>
+                            <p><strong>From:</strong> <span id="review-user-name-1">Loading...</span></p>
+                            <div class="review-rating" id="review-rating-1">Loading...</div>
+                            <p><span id="review-message-1">Loading...</span></p>
                         </div>
                     </div>
                     <div class="review-card" id="review-2">
                         <div class="review-image" style="background-image: url('../assets/placeholder-review.jpg');">
                         </div>
                         <div class="review-content">
-                            <p><span id="review-text-2">Loading...</span></p>
+                            <p><strong>Product:</strong> <span id="review-product-name-2">Loading...</span></p>
+                            <p><strong>From:</strong> <span id="review-user-name-2">Loading...</span></p>
+                            <div class="review-rating" id="review-rating-2">Loading...</div>
+                            <p><span id="review-message-2">Loading...</span></p>
                         </div>
                     </div>
                 </div>

@@ -9,6 +9,7 @@ const wishlistRoute = require('./routes/wishlistRoute');
 const orderRoute = require('./routes/orderRoute');
 const reviewRoute = require('./routes/reviewRoute');
 const messageRoute = require('./routes/messageRoute');
+const adminRoute = require('./routes/adminRoute'); // Add the new route
 
 dotenv.config();
 const app = express();
@@ -25,6 +26,7 @@ app.use('/api', wishlistRoute);
 app.use('/api', orderRoute);
 app.use('/api', reviewRoute);
 app.use('/api', messageRoute);
+app.use('/api/admin', adminRoute);
 
 const PORT = process.env.PORT || 4000;
 

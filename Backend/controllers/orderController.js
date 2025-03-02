@@ -1,5 +1,6 @@
 const Order = require('../models/orderModel');
 const Product = require('../models/productModel');
+const User = require('../models/userModel');
 
 exports.createOrder = async (req, res) => {
     try {
@@ -15,6 +16,11 @@ exports.createOrder = async (req, res) => {
             return res.status(404).json({ message: 'Product not found' });
         }
 
+        const user = await User.findByPk(userId); // Fetch user instance
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
         if (product.stockQuantity < 1) {
             return res.status(400).json({ message: 'Product out of stock' });
         }
@@ -22,8 +28,8 @@ exports.createOrder = async (req, res) => {
         const order = await Order.create({
             userId,
             productId,
-            userName,
-            Productname,
+            userName: name,
+            productName: product.name,
             address,
             contact,
             paymentMethod
