@@ -6,6 +6,9 @@ const productRoute = require('./routes/productRoute');
 const cartRoute = require('./routes/cartRoute');
 const cors = require('cors');
 const wishlistRoute = require('./routes/wishlistRoute');
+const orderRoute = require('./routes/orderRoute');
+const reviewRoute = require('./routes/reviewRoute');
+const messageRoute = require('./routes/messageRoute');
 
 dotenv.config();
 const app = express();
@@ -19,6 +22,9 @@ app.use('/api/user', userRoute);
 app.use('/api', productRoute);
 app.use('/api/cart', cartRoute);
 app.use('/api', wishlistRoute);
+app.use('/api', orderRoute);
+app.use('/api', reviewRoute);
+app.use('/api', messageRoute);
 
 const PORT = process.env.PORT || 4000;
 

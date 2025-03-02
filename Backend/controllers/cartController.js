@@ -1,5 +1,6 @@
 const Cart = require('../models/cartModel');
 const Product = require('../models/productModel');
+const User = require('../models/userModel');
 
 exports.addToCart = async (req, res) => {
     try {
@@ -16,6 +17,11 @@ exports.addToCart = async (req, res) => {
             return res.status(400).json({ message: 'Product out of stock' });
         }
 
+        const user = await User.findByPk(userId); // Fetch user instance
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
         // Check if already in cart
         const existingCartItem = await Cart.findOne({ where: { userId, productId } });
         if (existingCartItem) {
@@ -26,6 +32,8 @@ exports.addToCart = async (req, res) => {
         const cartItem = await Cart.create({
             userId,
             productId,
+            userName: user.name, // Fetch user's name
+            productName: product.name,
             quantity: 1
         });
 

@@ -58,7 +58,7 @@
             <div class="contact-content">
                 <h2>Contact Us</h2>
                 <p>Send us a message or find our contact details below.</p>
-                <form class="contact-form">
+                <form id="contactForm" class="contact-form">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" placeholder="Your Full Name" required>
                     <label for="email">Email</label>
@@ -117,14 +117,8 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="../scripts/contact.js"></script>
-    <script>
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function () {
-            document.querySelector('.nav-center').classList.toggle('nav-active');
-            document.querySelector('.auth-buttons').classList.toggle('auth-active');
-            this.classList.toggle('open');
-        });
-    </script>
+    <script src="../scripts/contact.js" defer></script>
+    <!-- Removed inline script -->
 </body>
 
 </html>

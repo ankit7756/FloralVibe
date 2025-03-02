@@ -1,5 +1,6 @@
 const Wishlist = require('../models/wishlistModel');
 const Product = require('../models/productModel');
+const User = require('../models/userModel');
 
 exports.addToWishlist = async (req, res) => {
     try {
@@ -15,6 +16,11 @@ exports.addToWishlist = async (req, res) => {
             return res.status(404).json({ message: 'Product not found' });
         }
 
+        const user = await User.findByPk(userId); // Fetch user instance
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
         const existingWishlistItem = await Wishlist.findOne({ where: { userId, productId } });
         if (existingWishlistItem) {
             return res.status(400).json({ message: 'Product already in wishlist' });
@@ -22,7 +28,9 @@ exports.addToWishlist = async (req, res) => {
 
         const wishlistItem = await Wishlist.create({
             userId,
-            productId
+            productId,
+            userName: user.name,
+            productName: product.name
         });
 
         res.status(201).json({ message: 'Product added to wishlist', wishlistItem });

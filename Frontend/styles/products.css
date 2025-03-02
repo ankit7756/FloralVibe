@@ -334,11 +334,11 @@ body {
     transform: translateY(-2px);
 }
 
-.wishlist {
+.add-to-wishlist {
     background-color: #ffb6c1;
 }
 
-.wishlist:hover {
+.add-to-wishlist:hover {
     background-color: #ff8c94;
     transform: translateY(-2px);
 }

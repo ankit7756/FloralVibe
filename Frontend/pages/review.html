@@ -47,18 +47,14 @@
                 <p class="subtitle">Your feedback helps us deliver the best flowers!</p>
                 <div class="review-card">
                     <div id="dynamic-product" class="product-details">
-                        <!-- Placeholder for Dynamic Product Image -->
-                        <div class="product-image" style="background-image: url('../assets/placeholder-flower.jpg');">
-                        </div>
-                        <!-- Placeholder for Dynamic Product Name and Description -->
+                        <div class="product-image" id="product-image"></div>
                         <h2 id="product-name">Product Name</h2>
                         <p id="product-description">Product Description</p>
                     </div>
-                    <form class="review-form">
-                        <!-- Hidden field for order ID -->
-                        <input type="hidden" id="orderId" name="orderId" value="">
+                    <form id="reviewForm" class="review-form">
+                        <input type="hidden" id="rating" name="rating" value="0">
                         <label for="rating">Rating:</label>
-                        <div class="star-rating">
+                        <div class="star-rating" id="star-rating">
                             <i class="fas fa-star" data-rating="1"></i>
                             <i class="fas fa-star" data-rating="2"></i>
                             <i class="fas fa-star" data-rating="3"></i>
@@ -66,7 +62,7 @@
                             <i class="fas fa-star" data-rating="5"></i>
                         </div>
                         <label for="review-text">Your Review:</label>
-                        <textarea id="review-text" name="review-text" rows="5"
+                        <textarea id="review-text" name="message" rows="5"
                             placeholder="Write your review here..."></textarea>
                         <button type="submit" class="submit-btn">Submit Review</button>
                     </form>
@@ -110,11 +106,7 @@
     <!-- Scripts -->
     <script src="../scripts/review.js"></script>
     <script>
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function () {
-            document.querySelector('.nav-center').classList.toggle('nav-active');
-            document.querySelector('.auth-buttons').classList.toggle('auth-active');
-            this.classList.toggle('open');
-        });
+        // Moved to review.js
     </script>
 </body>
 
