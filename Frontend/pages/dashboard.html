@@ -4,150 +4,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>FloralVibe | Admin Dashboard</title>
     <link rel="stylesheet" href="../styles/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
-
     <div class="dashboard">
+        <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-header">
-                <h2>Admin Dashboard</h2>
+                <h2>Admin Panel</h2>
             </div>
-            <ul class="sidebar-menu">
-                <li><a href="#overview">Overview</a></li>
-                <hr>
-                <li><a href="#orders">Orders</a></li>
-                <hr>
-                <li><a href="#products">Products</a></li>
-                <hr>
-                <li><a href="#users">Users</a></li>
-                <hr>
-                <li><a href="#reviews">Reviews</a></li>
-                <hr>
-            </ul>
+            <nav class="sidebar-menu">
+                <ul>
+                    <li><a href="#overview"><i class="fas fa-chart-pie"></i> Overview</a></li>
+                    <li><a href="#orders"><i class="fas fa-box"></i> Orders</a></li>
+                    <li><a href="#products"><i class="fas fa-seedling"></i> Products</a></li>
+                    <li><a href="#messages"><i class="fas fa-envelope"></i> Messages</a></li>
+                    <li><a href="#reviews"><i class="fas fa-comment"></i> Reviews</a></li>
+                </ul>
+            </nav>
         </aside>
 
+        <!-- Main Content -->
         <main class="main-content">
             <section id="overview" class="section">
                 <div class="overview-header">
                     <h1>Welcome to Your Admin Dashboard</h1>
-                    <a href="../pages/HomePage.html" class="btn back-to-home">Back to Home</a>
+                    <a href="../pages/HomePage.html" class="btn back-btn">Back to Home</a>
                 </div>
-                <div class="overview-cards">
-                    <div class="card">
+                <div class="stats-grid">
+                    <div class="stat-card">
                         <h3>Total Sales</h3>
-                        <p>Rs. 125000</p>
+                        <p id="total-sales">Loading...</p>
                     </div>
-                    <div class="card">
+                    <div class="stat-card">
                         <h3>Orders</h3>
-                        <p>320</p>
+                        <p id="total-orders">Loading...</p>
                     </div>
-                    <div class="card">
+                    <div class="stat-card">
                         <h3>Active Users</h3>
-                        <p>10</p>
+                        <p id="active-users">Loading...</p>
                     </div>
-                    <div class="card">
+                    <div class="stat-card">
                         <h3>Products</h3>
-                        <p>20</p>
+                        <p id="total-products">Loading...</p>
                     </div>
                 </div>
             </section>
 
             <section id="orders" class="section">
                 <h2>Recent Orders</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Order ID</th>
-                            <th>Customer</th>
-                            <th>Status</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>#1001</td>
-                            <td>Saroj Neupae</td>
-                            <td>Delivered</td>
-                            <td>Rs.1250</td>
-                        </tr>
-                        <tr>
-                            <td>#1002</td>
-                            <td>Bikash Shrestha</td>
-                            <td>Pending</td>
-                            <td>Rs.2500</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="order-container">
+                    <div class="order-card" id="order-1">
+                        <div class="order-info">
+                            <p><strong>Order ID:</strong> <span id="order-id-1">Loading...</span></p>
+                            <p><strong>Customer:</strong> <span id="customer-1">Loading...</span></p>
+                            <p><strong>Status:</strong> <span id="status-1">Loading...</span></p>
+                            <p><strong>Total:</strong> <span id="total-1">Loading...</span></p>
+                        </div>
+                    </div>
+                    <div class="order-card" id="order-2">
+                        <div class="order-info">
+                            <p><strong>Order ID:</strong> <span id="order-id-2">Loading...</span></p>
+                            <p><strong>Customer:</strong> <span id="customer-2">Loading...</span></p>
+                            <p><strong>Status:</strong> <span id="status-2">Loading...</span></p>
+                            <p><strong>Total:</strong> <span id="total-2">Loading...</span></p>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section id="products" class="section">
                 <h2>Product Management</h2>
-                <a href="../pages/addProduct.html" class="btn">Add New Product</a>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Product ID</th>
-                            <th>Name</th>
-                            <th>Stock</th>
-                            <th>Price</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>#P001</td>
-                            <td>Rose</td>
-                            <td>25</td>
-                            <td>Rs.1900</td>
-                            <td>
-                                <button class="btn edit">Edit</button>
-                                <button class="btn delete">Delete</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <a href="../pages/addProduct.html" class="btn add-product-btn">Add New Product</a>
+                <p class="recent-products-title">Recent Products</p>
+                <div class="product-container">
+                    <div class="product-card" id="product-1">
+                        <div class="product-image" style="background-image: url('../assets/placeholder-product.jpg');">
+                        </div>
+                        <div class="product-info">
+                            <p><strong>ID:</strong> <span id="product-id-1">Loading...</span></p>
+                            <p><strong>Name:</strong> <span id="product-name-1">Loading...</span></p>
+                            <p><strong>Price:</strong> <span id="product-price-1">Loading...</span></p>
+                            <div class="actions">
+                                <button class="btn edit-btn">Edit</button>
+                                <button class="btn delete-btn">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
-            <section id="users" class="section">
-                <h2>User Management</h2>
-                <button class="btn" id="addUserBtn">Add New User</button>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>User ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Role</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>#U001</td>
-                            <td>Admin</td>
-                            <td>admin@example.com</td>
-                            <td>Administrator</td>
-                            <td>
-                                <button class="btn edit">Edit</button>
-                                <button class="btn delete">Delete</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <section id="messages" class="section">
+                <h2>Messages</h2>
+                <div class="message-container">
+                    <div class="message-card" id="message-1">
+                        <p><strong>From:</strong> <span id="message-user-1">Loading...</span></p>
+                        <p><span id="message-text-1">Loading...</span></p>
+                    </div>
+                    <div class="message-card" id="message-2">
+                        <p><strong>From:</strong> <span id="message-user-2">Loading...</span></p>
+                        <p><span id="message-text-2">Loading...</span></p>
+                    </div>
+                </div>
             </section>
 
             <section id="reviews" class="section">
                 <h2>Flower Reviews</h2>
-                <ul class="reviews">
-                    <li>"The roses I bought were absolutely stunning and fresh! Highly recommended."</li>
-                    <li>"The tulips added such a vibrant touch to my living room. Great quality!"</li>
-                    <li>"The orchids were delivered promptly and in excellent condition. Will buy again."</li>
-                </ul>
+                <div class="review-container">
+                    <div class="review-card" id="review-1">
+                        <div class="review-image" style="background-image: url('../assets/placeholder-review.jpg');">
+                        </div>
+                        <div class="review-content">
+                            <p><span id="review-text-1">Loading...</span></p>
+                        </div>
+                    </div>
+                    <div class="review-card" id="review-2">
+                        <div class="review-image" style="background-image: url('../assets/placeholder-review.jpg');">
+                        </div>
+                        <div class="review-content">
+                            <p><span id="review-text-2">Loading...</span></p>
+                        </div>
+                    </div>
+                </div>
             </section>
-
         </main>
     </div>
     <script src="../scripts/dashboard.js"></script>

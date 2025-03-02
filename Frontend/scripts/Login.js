@@ -4,7 +4,7 @@ function togglePassword(id) {
   passwordField.setAttribute('type', type);
 }
 
-document.querySelector('.register-form').addEventListener('submit', async function (e) {
+document.querySelector('.login-form').addEventListener('submit', async function (e) {
   e.preventDefault();
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;

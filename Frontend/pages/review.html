@@ -4,62 +4,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Reviews</title>
+    <title>FloralVibe | Review Your Order</title>
     <link rel="stylesheet" href="../styles/review.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
+    <!-- Navbar -->
     <header class="navbar">
-        <a href="../pages/index.html">
-            <img src="../assets/logo.png" alt="FloralVibe Logo" class="logo">
-        </a>
-        <nav class="nav-center">
-            <ul class="nav-links">
-                <li><a href="../pages/HomePage.html">Home</a></li>
-                <li><a href="../pages/Contact.html">Contact</a></li>
-                <li><a href="../pages/products.html">Products</a></li>
-                <li><a href="../pages/About.html">About</a></li>
-            </ul>
-        </nav>
-        <button class="logout-btn" id="logout-btn">Logout</button>
-
+        <div class="nav-container">
+            <a href="../pages/index.html" class="logo-container">
+                <img src="../assets/logo.png" alt="FloralVibe Logo" class="logo">
+            </a>
+            <nav class="nav-center">
+                <ul class="nav-links">
+                    <li><a href="../pages/HomePage.html">Home</a></li>
+                    <li><a href="../pages/about.html">About</a></li>
+                    <li><a href="../pages/products.html">Products</a></li>
+                    <li><a href="../pages/contact.html">Contact</a></li>
+                    <li><a href="../pages/review.html" class="active">Review</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <button class="logout-btn" id="logout-btn">Logout</button>
+            </div>
+            <button class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
     </header>
 
-    <div class="review-container">
-        <h1>Share Your Experience</h1>
-        <p class="subtitle">Your feedback helps us deliver the best flowers!</p>
-
-        <div class="product-review">
-            <div class="product-card">
-                <img src="../assets/Hpage.jpg" alt="Product" class="product-image">
-                <div class="product-details">
-                    <h2>Rose Bouquet</h2>
-                    <p>Elegant and fresh roses for any occasion.</p>
-
-                    <div class="review-form">
+    <!-- Main Content -->
+    <main>
+        <section class="review-section">
+            <div class="review-container">
+                <h1>Share Your Experience</h1>
+                <p class="subtitle">Your feedback helps us deliver the best flowers!</p>
+                <div class="review-card">
+                    <div id="dynamic-product" class="product-details">
+                        <div class="product-image" id="product-image"></div>
+                        <h2 id="product-name">Product Name</h2>
+                        <p id="product-description">Product Description</p>
+                    </div>
+                    <form id="reviewForm" class="review-form">
+                        <input type="hidden" id="rating" name="rating" value="0">
                         <label for="rating">Rating:</label>
-                        <div class="star-rating">
+                        <div class="star-rating" id="star-rating">
                             <i class="fas fa-star" data-rating="1"></i>
                             <i class="fas fa-star" data-rating="2"></i>
                             <i class="fas fa-star" data-rating="3"></i>
                             <i class="fas fa-star" data-rating="4"></i>
                             <i class="fas fa-star" data-rating="5"></i>
                         </div>
-                        <textarea placeholder="Write your review here..." rows="4"></textarea>
-                        <button class="submit-btn">Submit Review</button>
-                    </div>
+                        <label for="review-text">Your Review:</label>
+                        <textarea id="review-text" name="message" rows="5"
+                            placeholder="Write your review here..."></textarea>
+                        <button type="submit" class="submit-btn">Submit Review</button>
+                    </form>
                 </div>
             </div>
+        </section>
+    </main>
 
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="../assets/logo.png" alt="FloralVibe Logo" class="logo">
+                <p>Bringing beauty and joy through flowers since 2020</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="../pages/HomePage.html">Home</a></li>
+                    <li><a href="../pages/about.html">About</a></li>
+                    <li><a href="../pages/products.html">Products</a></li>
+                    <li><a href="../pages/contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-envelope"></i> floralvibe@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +977 9861790170</p>
+                <div class="social-icons">
+                    <span><i class="fab fa-facebook-f"></i></span>
+                    <span><i class="fab fa-instagram"></i></span>
+                    <span><i class="fab fa-pinterest"></i></span>
+                </div>
+            </div>
         </div>
-    </div>
-
-    <footer class="footer">
-        <p>&copy; 2024 FloralVibe. All rights reserved.</p>
+        <div class="footer-bottom">
+            <p>© 2025 FloralVibe. All Rights Reserved.</p>
+        </div>
     </footer>
 
+    <!-- Scripts -->
     <script src="../scripts/review.js"></script>
+    <script>
+        // Moved to review.js
+    </script>
 </body>
 
 </html>

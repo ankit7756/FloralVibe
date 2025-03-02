@@ -4,51 +4,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout</title>
+    <title>FloralVibe | Checkout</title>
     <link rel="stylesheet" href="../styles/checkout.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
-    <!-- Navbar Part -->
+    <!-- Navbar -->
     <header class="navbar">
-        <a href="../pages/index.html">
-            <img src="../assets/logo.png" alt="FloralVibe Logo" class="logo">
-        </a>
-        <nav class="nav-center">
-            <ul class="nav-links">
-                <li><a href="../pages/HomePage.html">Home</a></li>
-                <li><a href="../pages/about.html">About</a></li>
-                <li><a href="../pages/contact.html">Contact</a></li>
-                <li><a href="../pages/products.html">Products</a></li>
-                <li><a href="../pages/review.html">Review</a></li>
-            </ul>
-        </nav>
-        <button class="logout-btn" id="logout-btn">Logout</button>
+        <div class="nav-container">
+            <a href="../pages/index.html" class="logo-container">
+                <img src="../assets/logo.png" alt="FloralVibe Logo" class="logo">
+            </a>
+            <nav class="nav-center">
+                <ul class="nav-links">
+                    <li><a href="../pages/HomePage.html">Home</a></li>
+                    <li><a href="../pages/about.html">About</a></li>
+                    <li><a href="../pages/products.html">Products</a></li>
+                    <li><a href="../pages/contact.html">Contact</a></li>
+                    <li><a href="../pages/review.html">Review</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <button class="logout-btn" id="logout-btn">Logout</button>
+            </div>
+            <button class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
     </header>
 
-    <div class="checkout-container">
-        <h1>Checkout</h1>
-        <form id="checkoutForm">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="address">Address:</label>
-            <input type="text" id="address" name="address" required>
-
-            <label for="payment-method">Payment Method:</label>
-            <select id="payment-method" name="payment-method" required>
-                <option value="cash-on-delivery">Cash on Delivery</option>
-                <option value="esewa">eSewa</option>
-                <option value="khalti">Khalti</option>
-            </select>
-
-            <div id="payment-details" style="display: none;">
-                <label for="payment-number">Send to: 9861790119</label>
-                <input type="number" id="payment-amount" name="payment-amount" placeholder="Enter amount" required>
+    <!-- Main Content -->
+    <main>
+        <section class="checkout-section">
+            <div class="checkout-container">
+                <h1>Checkout Your Order</h1>
+                <div class="order-summary">
+                    <div class="product-preview" id="product-preview">
+                        <div class="product-image" style="background-image: url('../assets/placeholder-flower.jpg');">
+                        </div>
+                        <div class="product-details">
+                            <h2 id="product-name">Product Name</h2>
+                            <p id="product-price">Price: Loading...</p>
+                        </div>
+                    </div>
+                </div>
+                <form id="checkoutForm" class="checkout-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" name="address" placeholder="Enter your address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">Contact Number</label>
+                        <input type="tel" id="contact" name="contact" placeholder="Enter your contact number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="payment-method">Payment Method</label>
+                        <select id="payment-method" name="payment-method" required>
+                            <option value="cash-on-delivery">Cash on Delivery</option>
+                            <option value="esewa">eSewa</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn checkout-btn">Place Order</button>
+                </form>
             </div>
+        </section>
+    </main>
 
-            <button type="submit">Place Order</button>
-        </form>
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Pay via eSewa</h2>
+                <p>FloralVibe Official eSewa</p>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="qr-placeholder" style="background-image: url('../assets/official_paymentqr.jpg');"></div>
+                <p>Scan this QR Code to Confirm Payment</p>
+                <button class="btn confirm-payment">Confirm Payment</button>
+            </div>
+        </div>
     </div>
 
     <script src="../scripts/checkout.js"></script>
