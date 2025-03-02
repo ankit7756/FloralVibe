@@ -25,18 +25,20 @@ document.addEventListener('DOMContentLoaded', async function () {
             orderItem.className = 'order-item';
             orderItem.id = `order-item-${order.id}`;
 
-            let reviewAction = `
-                <div class="item-actions">
-                    <a href="../pages/review.html?productId=${order.productId}" class="btn review-btn">Review</a>
-                </div>
-            `;
-            if (order.reviewed) {
-                reviewAction = `
-                    <div class="item-actions">
-                        <span class="reviewed-text">Reviewed!</span>
-                    </div>
+            let receiveAction = '';
+            if (order.status === 'Pending') {
+                receiveAction = `
+                    <button class="btn received-btn" data-id="${order.id}"><i class="fas fa-check"></i> Mark as Received</button>
+                `;
+            } else if (order.status === 'Received') {
+                receiveAction = `
+                    <span class="received-confirmation">Received! <i class="fas fa-check-circle"></i></span>
                 `;
             }
+
+            let reviewAction = `
+                <a href="${order.reviewed ? '#' : '../pages/review.html?productId=' + order.productId}" class="btn review-btn" ${order.reviewed ? 'style="pointer-events: none; opacity: 0.6;"' : ''}>${order.reviewed ? 'Reviewed!' : 'Review'}</a>
+            `;
 
             orderItem.innerHTML = `
                 <div class="item-image" style="background-image: url('${order.Product.image}');"></div>
@@ -46,7 +48,10 @@ document.addEventListener('DOMContentLoaded', async function () {
                     <p class="order-price" id="order-price-${order.id}">रु. ${parseFloat(order.Product.price).toFixed(2)}</p>
                     <p class="order-status" id="order-status-${order.id}">Status: ${order.status}</p>
                 </div>
-                ${reviewAction}
+                <div class="item-actions">
+                    ${receiveAction}
+                    ${reviewAction}
+                </div>
             `;
 
             orderItemsContainer.appendChild(orderItem);
@@ -57,6 +62,35 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 
     function setupEventListeners() {
+        // Received button listener
+        document.querySelectorAll('.received-btn').forEach(button => {
+            button.addEventListener('click', async function (e) {
+                e.preventDefault();
+                const orderId = this.getAttribute('data-id');
+
+                try {
+                    const response = await fetch(`http://localhost:4000/api/orders/${orderId}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ status: 'Received' })
+                    });
+                    const data = await response.json();
+                    if (response.ok) {
+                        alert(data.message);
+                        // Refresh the page to update the status and display
+                        window.location.reload();
+                    } else {
+                        alert('Error: ' + data.message);
+                    }
+                } catch (error) {
+                    console.error('Error updating order status:', error);
+                    alert('Failed to update order status');
+                }
+            });
+        });
+
         // Mobile menu button
         document.querySelector('.mobile-menu-btn').addEventListener('click', function () {
             document.querySelector('.nav-center').classList.toggle('nav-active');

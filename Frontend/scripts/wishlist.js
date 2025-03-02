@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             return;
         }
 
-        wishlistItems.forEach(item => {
+        wishlistItems.reverse().forEach(item => {
             const wishlistItem = document.createElement('div');
             wishlistItem.className = 'wishlist-item';
             wishlistItem.id = `wishlist-item-${item.id}`;

@@ -240,16 +240,96 @@ h1 {
 
 .item-actions {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 10px;
+    gap: 10px;
+}
+
+.btn.received-btn {
+    padding: 8px 15px;
+    border: 2px solid #28a745;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: #fff;
+    color: #28a745;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn.received-btn:hover {
+    background-color: #28a745;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn.received-btn i {
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.btn.received-btn:hover i {
+    transform: scale(1.2);
+}
+
+.received-confirmation {
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+    background-color: #28a745;
+    /* Solid green for confirmation */
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.received-confirmation i {
+    font-size: 1rem;
+    color: #fff;
 }
 
 .reviewed-text {
     font-size: 1rem;
     font-weight: 600;
     color: #28a745;
-    /* Green for success */
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #e6ffe6;
+}
+
+.btn.review-btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: #ff99cc;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn.review-btn:hover {
+    background-color: #ff66b3;
+}
+
+.reviewed-text {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #28a745;
     padding: 5px 10px;
     border-radius: 5px;
     background-color: #e6ffe6;

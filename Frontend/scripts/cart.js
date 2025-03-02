@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             return;
         }
 
-        cartItems.forEach(item => {
+        cartItems.reverse().forEach(item => {
             const cartItem = document.createElement('div');
             cartItem.className = 'cart-item';
             cartItem.id = `cart-item-${item.id}`;
