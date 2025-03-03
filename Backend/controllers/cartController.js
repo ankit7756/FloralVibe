@@ -4,7 +4,10 @@ const User = require('../models/userModel');
 
 exports.addToCart = async (req, res) => {
     try {
-        const { productId, userId = 1 } = req.body; // Get userId from body or default to 1
+        // const { productId, userId = 1 } = req.body; // Get userId from body or default to 1
+        const { productId } = req.body;
+        const userId = req.user.id; // Get userId from the authenticated user
+
 
         // Check if product exists
         const product = await Product.findByPk(productId);
@@ -45,11 +48,12 @@ exports.addToCart = async (req, res) => {
 
 exports.getCart = async (req, res) => {
     try {
-        // const userId = req.query.userId || 1; // Get from query params or default to 1
-        const { userId } = req.query; // Get userId from query parameter
-        if (!userId) {
-            return res.status(400).json({ message: 'userId is required' });
-        }
+        // // const userId = req.query.userId || 1; // Get from query params or default to 1
+        // const { userId } = req.query; // Get userId from query parameter
+        // if (!userId) {
+        //     return res.status(400).json({ message: 'userId is required' });
+        // }
+        const userId = req.user.id; // Get from authenticated user
 
         const cartItems = await Cart.findAll({
             where: { userId },
@@ -64,8 +68,11 @@ exports.getCart = async (req, res) => {
 
 exports.removeFromCart = async (req, res) => {
     try {
+        // const { id } = req.params; // Cart item ID
+        // const userId = 1; // Mock userId
         const { id } = req.params; // Cart item ID
-        const userId = 1; // Mock userId
+        const userId = req.user.id; // Get from authenticated user
+
 
         const cartItem = await Cart.findOne({ where: { id, userId } });
         if (!cartItem) {
