@@ -1,22 +1,21 @@
 const Product = require('../models/productModel');
 const Order = require('../models/orderModel');
 const User = require('../models/userModel');
+const Message = require('../models/messageModel');
+const Review = require('../models/reviewModel');
 const cloudinary = require('cloudinary').v2;
 const multer = require('multer');
 const { Readable } = require('stream');
 
-// Configure Cloudinary
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_NAME,
     api_key: process.env.CLOUDINARY_API_KEY,
     api_secret: process.env.CLOUDINARY_SECRET_KEY
 });
 
-// Configure Multer for file upload
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
-// Function to upload buffer to Cloudinary
 const uploadFromBuffer = (buffer) => {
     return new Promise((resolve, reject) => {
         const uploadStream = cloudinary.uploader.upload_stream(
@@ -38,7 +37,6 @@ const uploadFromBuffer = (buffer) => {
     });
 };
 
-// Middleware array for adding products
 exports.addProduct = [
     upload.single('productImage'),
     async (req, res) => {
@@ -117,5 +115,116 @@ exports.getDashboardStats = async (req, res) => {
         });
     } catch (error) {
         res.status(500).json({ message: 'Error fetching dashboard stats', error: error.message });
+    }
+};
+
+exports.getRecentOrders = async (req, res) => {
+    try {
+        const recentOrders = await Order.findAll({
+            include: [{
+                model: Product,
+                attributes: ['image', 'price']
+            }],
+            attributes: ['id', 'status', 'userName', 'orderDate'],
+            order: [['orderDate', 'DESC']],
+            limit: 4
+        });
+
+        res.status(200).json(recentOrders);
+    } catch (error) {
+        console.error('Error fetching recent orders:', error);
+        res.status(500).json({ message: 'Error fetching recent orders', error: error.message });
+    }
+};
+
+exports.getRecentProducts = async (req, res) => {
+    try {
+        const recentProducts = await Product.findAll({
+            order: [['createdAt', 'DESC']],
+            limit: 4
+        });
+        res.status(200).json(recentProducts);
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching recent products', error: error.message });
+    }
+};
+
+exports.updateProduct = [
+    upload.single('newProductImage'),
+    async (req, res) => {
+        try {
+            const { id } = req.params;
+            const { name, price, stockQuantity, category } = req.body;
+
+            const product = await Product.findByPk(id);
+            if (!product) {
+                return res.status(404).json({ message: 'Product not found' });
+            }
+
+            product.name = name || product.name;
+            product.price = parseFloat(price) || product.price;
+            product.stockQuantity = parseInt(stockQuantity) || product.stockQuantity;
+            product.category = category || product.category;
+
+            if (req.file) {
+                const result = await uploadFromBuffer(req.file.buffer);
+                product.image = result.secure_url;
+            }
+
+            await product.save();
+            res.status(200).json({ message: 'Product updated successfully', product });
+        } catch (error) {
+            console.error('Error updating product:', error);
+            res.status(500).json({ message: 'Error updating product', error: error.message });
+        }
+    }
+];
+
+exports.deleteProduct = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const product = await Product.findByPk(id);
+        if (!product) {
+            return res.status(404).json({ message: 'Product not found' });
+        }
+
+        const relatedOrders = await Order.count({ where: { productId: id } });
+        if (relatedOrders > 0) {
+            return res.status(400).json({ message: 'Cannot delete product with existing orders' });
+        }
+
+        await product.destroy();
+        res.status(200).json({ message: 'Product deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting product:', error);
+        res.status(500).json({ message: 'Error deleting product', error: error.message });
+    }
+};
+
+exports.getMessages = async (req, res) => {
+    try {
+        const messages = await Message.findAll({
+            order: [['createdAt', 'DESC']],
+            limit: 4
+        });
+        res.status(200).json(messages);
+    } catch (error) {
+        console.error('Error fetching messages:', error);
+        res.status(500).json({ message: 'Error fetching messages', error: error.message });
+    }
+};
+
+exports.getReviews = async (req, res) => {
+    try {
+        const reviews = await Review.findAll({
+            include: [{ model: Product, attributes: ['image', 'name'] }],
+            attributes: ['userName', 'rating', 'message', 'createdAt'],
+            order: [['createdAt', 'DESC']],
+            limit: 4
+        });
+        res.status(200).json(reviews);
+    } catch (error) {
+        console.error('Error fetching reviews:', error);
+        res.status(500).json({ message: 'Error fetching reviews', error: error.message });
     }
 };

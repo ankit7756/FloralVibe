@@ -88,22 +88,7 @@
                 <a href="../pages/addProduct.html" class="btn add-product-btn">Add New Product</a>
                 <p class="recent-products-title">Recent Products</p>
                 <div class="product-container">
-                    <div class="product-card" id="product-1">
-                        <div class="product-image" style="background-image: url('../assets/placeholder-product.jpg');">
-                        </div>
-                        <div class="product-info">
-                            <p><strong>ID:</strong> <span id="product-id-1">Loading...</span></p>
-                            <p><strong>Name:</strong> <span id="product-name-1">Loading...</span></p>
-                            <p><strong>Price:</strong> <span id="product-price-1">Loading...</span></p>
-                            <p><strong>Stock:</strong> <span id="product-stock-1">Loading...</span></p>
-                            <p><strong>Category:</strong> <span id="product-category-1">Loading...</span></p>
-                            <div class="actions">
-                                <button class="btn edit-btn">Edit</button>
-                                <button class="btn delete-btn">Delete</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Add more product cards as needed -->
+                    <!-- Dynamic product cards will be inserted here -->
                 </div>
             </section>
 
@@ -148,6 +133,43 @@
             </section>
         </main>
     </div>
+
+    <!-- Edit Product Modal -->
+    <div id="editProductModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Edit Product</h2>
+            <div class="modal-image">
+                <img id="modal-product-image" src="" alt="Product Image" style="max-width: 100%;">
+                <button class="btn change-image-btn">Change Image</button>
+                <input type="file" id="newProductImage" style="display: none;" accept="image/*">
+            </div>
+            <form id="editProductForm">
+                <div class="modal-field">
+                    <label><strong>ID:</strong></label>
+                    <input type="text" id="modal-product-id" readonly>
+                </div>
+                <div class="modal-field">
+                    <label><strong>Name:</strong></label>
+                    <input type="text" id="modal-product-name">
+                </div>
+                <div class="modal-field">
+                    <label><strong>Price:</strong></label>
+                    <input type="number" id="modal-product-price" step="0.01">
+                </div>
+                <div class="modal-field">
+                    <label><strong>Stock:</strong></label>
+                    <input type="number" id="modal-product-stock" min="0">
+                </div>
+                <div class="modal-field">
+                    <label><strong>Category:</strong></label>
+                    <input type="text" id="modal-product-category">
+                </div>
+                <button type="submit" class="btn confirm-edit-btn">Confirm</button>
+            </form>
+        </div>
+    </div>
+
     <script src="../scripts/dashboard.js"></script>
 </body>
 

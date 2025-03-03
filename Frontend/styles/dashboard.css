@@ -268,7 +268,7 @@ body {
     border-radius: 8px;
     font-weight: 600;
     text-decoration: none;
-    transition: transform 0.3s ease, background 0.3s ease;
+    transition: transform 0.3s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
 }
@@ -291,18 +291,22 @@ body {
 .product-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    /* Changed to match order-container */
     gap: 25px;
+    /* Consistent gap */
 }
 
 .product-card {
     background: #fff;
-    padding: 20px;
+    padding: 25px;
     border-radius: 12px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
     display: flex;
     align-items: center;
     gap: 20px;
-    transition: transform 0.3s ease;
+    max-width: 400px;
+    /* Ensure it fits two per row */
 }
 
 .product-card:hover {
@@ -373,11 +377,131 @@ body {
     transform: translateY(-2px);
 }
 
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    /* Appropriate size, not too big or small */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #ff66b3;
+    transition: color 0.3s ease;
+}
+
+.close-modal:hover {
+    color: #cc529b;
+}
+
+.modal h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #ff66b3;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.modal-image {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.modal-image img {
+    max-width: 200px;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.change-image-btn {
+    padding: 8px 15px;
+    background-color: #66cc66;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.change-image-btn:hover {
+    background-color: #55aa55;
+}
+
+.modal-field {
+    margin-bottom: 15px;
+}
+
+.modal-field label {
+    display: block;
+    font-weight: 600;
+    color: #ff66b3;
+    margin-bottom: 5px;
+}
+
+.modal-field input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ff99cc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.modal-field input:focus {
+    outline: none;
+    border-color: #ff66b3;
+    box-shadow: 0 0 5px rgba(255, 102, 179, 0.5);
+}
+
+.confirm-edit-btn {
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #ff66b3, #ff99cc);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.confirm-edit-btn:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(45deg, #cc529b, #ff88bb);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
 .message-container,
 .review-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    /* Match product-container */
     gap: 25px;
+    /* Consistent gap */
 }
 
 .message-card,
@@ -387,6 +511,14 @@ body {
     border-radius: 12px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    display: flex;
+    /* Match product-card layout */
+    align-items: center;
+    /* Align items vertically */
+    gap: 20px;
+    /* Space between image and content (if added) */
+    max-width: 400px;
+    /* Ensure it fits two per row */
 }
 
 .message-card:hover,
@@ -400,6 +532,8 @@ body {
     color: #333;
     margin-bottom: 15px;
     line-height: 1.6;
+    flex-grow: 1;
+    /* Allow text to expand */
 }
 
 .message-card strong,
@@ -409,13 +543,15 @@ body {
 }
 
 .review-image {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    /* Match product-image size */
+    height: 120px;
     background-size: cover;
     background-position: center;
     border-radius: 10px;
     border: 2px solid #ff99cc;
-    margin-bottom: 15px;
+    margin-bottom: 0;
+    /* Remove bottom margin to align with flex */
     transition: transform 0.3s ease;
 }
 
@@ -431,6 +567,8 @@ body {
     display: flex;
     align-items: center;
     gap: 5px;
+    flex-shrink: 0;
+    /* Prevent shrinking */
 }
 
 /* Responsive Design */
