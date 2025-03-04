@@ -19,7 +19,7 @@ document.getElementById('addProductForm').addEventListener('submit', async (even
             alert('Product added successfully!');
             document.getElementById('addProductForm').reset();
             // Optionally refresh products page
-            window.location.href = '../pages/products.html';
+            window.location.href = '../pages/dashboard.html';
         } else {
             alert('Error adding product: ' + data.message);
         }

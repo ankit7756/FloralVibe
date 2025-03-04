@@ -4,8 +4,11 @@ const User = require('../models/userModel');
 
 exports.addToWishlist = async (req, res) => {
     try {
+        // const { productId } = req.body;
+        // const userId = 1; // Mock userId for now
         const { productId } = req.body;
-        const userId = 1; // Mock userId for now
+        const userId = req.user.id;
+
 
         if (!productId) {
             return res.status(400).json({ message: 'productId is required' });
@@ -41,7 +44,8 @@ exports.addToWishlist = async (req, res) => {
 
 exports.getWishlist = async (req, res) => {
     try {
-        const userId = 1; // Mock userId for now
+        const userId = req.user.id;
+
         const wishlistItems = await Wishlist.findAll({
             where: { userId },
             include: [{ model: Product }]
@@ -55,7 +59,8 @@ exports.getWishlist = async (req, res) => {
 exports.removeFromWishlist = async (req, res) => {
     try {
         const { id } = req.params; // Wishlist item ID
-        const userId = 1; // Mock userId
+        // CHANGED: Get userId from the authenticated user
+        const userId = req.user.id;
 
         const wishlistItem = await Wishlist.findOne({ where: { id, userId } });
         if (!wishlistItem) {

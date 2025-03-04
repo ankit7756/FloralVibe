@@ -1,5 +1,6 @@
 const Order = require('../models/orderModel');
 const Product = require('../models/productModel');
+const User = require('../models/userModel');
 
 exports.createOrder = async (req, res) => {
     try {
@@ -15,6 +16,11 @@ exports.createOrder = async (req, res) => {
             return res.status(404).json({ message: 'Product not found' });
         }
 
+        const user = await User.findByPk(userId); // Fetch user instance
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
         if (product.stockQuantity < 1) {
             return res.status(400).json({ message: 'Product out of stock' });
         }
@@ -22,8 +28,8 @@ exports.createOrder = async (req, res) => {
         const order = await Order.create({
             userId,
             productId,
-            userName,
-            Productname,
+            userName: name,
+            productName: product.name,
             address,
             contact,
             paymentMethod
@@ -55,3 +61,24 @@ exports.getOrders = async (req, res) => {
     }
 };
 
+exports.updateOrderStatus = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { status } = req.body;
+        const userId = 1; // Mock userId
+
+        const order = await Order.findOne({ where: { id, userId } });
+        if (!order) {
+            return res.status(404).json({ message: 'Order not found' });
+        }
+
+        if (status !== 'Received') {
+            return res.status(400).json({ message: 'Invalid status update' });
+        }
+
+        await order.update({ status });
+        res.status(200).json({ message: 'Order status updated to Received successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Error updating order status', error: error.message });
+    }
+};

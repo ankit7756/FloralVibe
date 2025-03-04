@@ -122,10 +122,33 @@
 // });
 
 document.addEventListener('DOMContentLoaded', async function () {
+    // CHANGED: Get authentication token from localStorage
+    const token = localStorage.getItem('token');
+
+    // CHANGED: Check if token exists
+    if (!token) {
+        // Redirect to login if no token
+        window.location.href = '../pages/login.html';
+        return;
+    }
+
     // Fetch wishlist items from API
     try {
-        const userId = 1; // Mock userId
-        const response = await fetch(`http://localhost:4000/api/wishlist?userId=${userId}`);
+        // CHANGED: Include auth token in request headers
+        const response = await fetch('http://localhost:4000/api/wishlist', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        // CHANGED: Handle unauthorized response
+        if (response.status === 401) {
+            alert('Session expired. Please login again.');
+            localStorage.removeItem('token');
+            window.location.href = '../pages/login.html';
+            return;
+        }
+
         const wishlistItems = await response.json();
         displayWishlistItems(wishlistItems);
     } catch (error) {
@@ -142,7 +165,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             return;
         }
 
-        wishlistItems.forEach(item => {
+        wishlistItems.reverse().forEach(item => {
             const wishlistItem = document.createElement('div');
             wishlistItem.className = 'wishlist-item';
             wishlistItem.id = `wishlist-item-${item.id}`;
@@ -175,33 +198,51 @@ document.addEventListener('DOMContentLoaded', async function () {
             this.classList.toggle('open');
         });
 
-        // Logout button
         document.getElementById('logout-btn').addEventListener('click', function (event) {
             event.preventDefault();
             const userConfirmed = confirm("Are you sure you want to log out?");
             if (userConfirmed) {
+                // CHANGED: Clear token on logout
+                localStorage.removeItem('token');
                 window.location.href = "../pages/HomePage.html";
             } else {
                 return;
             }
         });
 
-        // Remove buttons
+
         document.querySelectorAll('.remove-btn').forEach(button => {
             button.addEventListener('click', async function (e) {
                 e.preventDefault();
                 const wishlistId = this.getAttribute('data-id');
 
                 try {
+                    // CHANGED: Include auth token in request headers
                     const response = await fetch(`http://localhost:4000/api/wishlist/${wishlistId}`, {
-                        method: 'DELETE'
+                        method: 'DELETE',
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
                     });
+
+                    // CHANGED: Handle unauthorized response
+                    if (response.status === 401) {
+                        alert('Session expired. Please login again.');
+                        localStorage.removeItem('token');
+                        window.location.href = '../pages/login.html';
+                        return;
+                    }
+
                     const data = await response.json();
                     if (response.ok) {
                         alert(data.message);
                         // Refresh wishlist
-                        const userId = 1; // Mock userId
-                        const newResponse = await fetch(`http://localhost:4000/api/wishlist?userId=${userId}`);
+                        // CHANGED: Include auth token in request headers
+                        const newResponse = await fetch('http://localhost:4000/api/wishlist', {
+                            headers: {
+                                'Authorization': `Bearer ${token}`
+                            }
+                        });
                         const newWishlistItems = await newResponse.json();
                         displayWishlistItems(newWishlistItems);
                     } else {
@@ -219,16 +260,27 @@ document.addEventListener('DOMContentLoaded', async function () {
             button.addEventListener('click', async function (e) {
                 e.preventDefault();
                 const productId = this.getAttribute('data-id');
-                const userId = 1; // Mock userId
+                // CHANGED: Removed userId from request body
 
                 try {
+                    // CHANGED: Include auth token in request headers
                     const response = await fetch('http://localhost:4000/api/cart', {
                         method: 'POST',
                         headers: {
-                            'Content-Type': 'application/json'
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
                         },
-                        body: JSON.stringify({ productId, userId })
+                        body: JSON.stringify({ productId })
                     });
+
+                    // CHANGED: Handle unauthorized response
+                    if (response.status === 401) {
+                        alert('Session expired. Please login again.');
+                        localStorage.removeItem('token');
+                        window.location.href = '../pages/login.html';
+                        return;
+                    }
+
                     const data = await response.json();
                     if (response.ok) {
                         alert(data.message);
@@ -242,4 +294,4 @@ document.addEventListener('DOMContentLoaded', async function () {
             });
         });
     }
-});
+});       

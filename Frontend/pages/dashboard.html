@@ -43,7 +43,7 @@
                         <p id="total-sales">Loading...</p>
                     </div>
                     <div class="stat-card">
-                        <h3>Orders</h3>
+                        <h3>Total Orders</h3>
                         <p id="total-orders">Loading...</p>
                     </div>
                     <div class="stat-card">
@@ -51,7 +51,7 @@
                         <p id="active-users">Loading...</p>
                     </div>
                     <div class="stat-card">
-                        <h3>Products</h3>
+                        <h3>Total Products</h3>
                         <p id="total-products">Loading...</p>
                     </div>
                 </div>
@@ -61,6 +61,8 @@
                 <h2>Recent Orders</h2>
                 <div class="order-container">
                     <div class="order-card" id="order-1">
+                        <div class="order-image" style="background-image: url('../assets/placeholder-product.jpg');">
+                        </div>
                         <div class="order-info">
                             <p><strong>Order ID:</strong> <span id="order-id-1">Loading...</span></p>
                             <p><strong>Customer:</strong> <span id="customer-1">Loading...</span></p>
@@ -69,6 +71,8 @@
                         </div>
                     </div>
                     <div class="order-card" id="order-2">
+                        <div class="order-image" style="background-image: url('../assets/placeholder-product.jpg');">
+                        </div>
                         <div class="order-info">
                             <p><strong>Order ID:</strong> <span id="order-id-2">Loading...</span></p>
                             <p><strong>Customer:</strong> <span id="customer-2">Loading...</span></p>
@@ -84,19 +88,7 @@
                 <a href="../pages/addProduct.html" class="btn add-product-btn">Add New Product</a>
                 <p class="recent-products-title">Recent Products</p>
                 <div class="product-container">
-                    <div class="product-card" id="product-1">
-                        <div class="product-image" style="background-image: url('../assets/placeholder-product.jpg');">
-                        </div>
-                        <div class="product-info">
-                            <p><strong>ID:</strong> <span id="product-id-1">Loading...</span></p>
-                            <p><strong>Name:</strong> <span id="product-name-1">Loading...</span></p>
-                            <p><strong>Price:</strong> <span id="product-price-1">Loading...</span></p>
-                            <div class="actions">
-                                <button class="btn edit-btn">Edit</button>
-                                <button class="btn delete-btn">Delete</button>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Dynamic product cards will be inserted here -->
                 </div>
             </section>
 
@@ -121,20 +113,63 @@
                         <div class="review-image" style="background-image: url('../assets/placeholder-review.jpg');">
                         </div>
                         <div class="review-content">
-                            <p><span id="review-text-1">Loading...</span></p>
+                            <p><strong>Product:</strong> <span id="review-product-name-1">Loading...</span></p>
+                            <p><strong>From:</strong> <span id="review-user-name-1">Loading...</span></p>
+                            <div class="review-rating" id="review-rating-1">Loading...</div>
+                            <p><span id="review-message-1">Loading...</span></p>
                         </div>
                     </div>
                     <div class="review-card" id="review-2">
                         <div class="review-image" style="background-image: url('../assets/placeholder-review.jpg');">
                         </div>
                         <div class="review-content">
-                            <p><span id="review-text-2">Loading...</span></p>
+                            <p><strong>Product:</strong> <span id="review-product-name-2">Loading...</span></p>
+                            <p><strong>From:</strong> <span id="review-user-name-2">Loading...</span></p>
+                            <div class="review-rating" id="review-rating-2">Loading...</div>
+                            <p><span id="review-message-2">Loading...</span></p>
                         </div>
                     </div>
                 </div>
             </section>
         </main>
     </div>
+
+    <!-- Edit Product Modal -->
+    <div id="editProductModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Edit Product</h2>
+            <div class="modal-image">
+                <img id="modal-product-image" src="" alt="Product Image" style="max-width: 100%;">
+                <button class="btn change-image-btn">Change Image</button>
+                <input type="file" id="newProductImage" style="display: none;" accept="image/*">
+            </div>
+            <form id="editProductForm">
+                <div class="modal-field">
+                    <label><strong>ID:</strong></label>
+                    <input type="text" id="modal-product-id" readonly>
+                </div>
+                <div class="modal-field">
+                    <label><strong>Name:</strong></label>
+                    <input type="text" id="modal-product-name">
+                </div>
+                <div class="modal-field">
+                    <label><strong>Price:</strong></label>
+                    <input type="number" id="modal-product-price" step="0.01">
+                </div>
+                <div class="modal-field">
+                    <label><strong>Stock:</strong></label>
+                    <input type="number" id="modal-product-stock" min="0">
+                </div>
+                <div class="modal-field">
+                    <label><strong>Category:</strong></label>
+                    <input type="text" id="modal-product-category">
+                </div>
+                <button type="submit" class="btn confirm-edit-btn">Confirm</button>
+            </form>
+        </div>
+    </div>
+
     <script src="../scripts/dashboard.js"></script>
 </body>
 
