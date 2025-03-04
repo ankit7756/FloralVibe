@@ -37,3 +37,8 @@ Traditional flower shopping often involves limited online options, manual order 
 ### **Database Technologies**
 - **Database**: PostgreSQL
 - **ORM**: Sequelize for efficient data modeling and relationships
+
+## **Youtube Video link of Project Demonstration**
+- Youtube link: https://youtu.be/KAUmyDB0VBw?si=5FkU8b_S2H7U9Mwz
+  
+
