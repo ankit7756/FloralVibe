@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                         border: "1px solid #e0e0e0"
                     }
                 }).showToast();
-                this.reset(); // Clear form
+                this.reset();
             } else {
                 alert('Error: ' + data.message);
             }
