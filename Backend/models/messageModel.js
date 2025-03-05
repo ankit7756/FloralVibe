@@ -5,7 +5,7 @@ const Message = sequelize.define('Message', {
     userId: {
         type: DataTypes.INTEGER,
         allowNull: true,
-        references: { model: 'Users', key: 'id' }
+        references: { model: 'Users', key: 'id' } // reference
     },
     userName: {
         type: DataTypes.STRING,
