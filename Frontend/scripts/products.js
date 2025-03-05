@@ -229,7 +229,6 @@ document.addEventListener('DOMContentLoaded', async function () {
             });
         }
 
-        // Search functionality
         document.getElementById('search-bar').addEventListener('input', function () {
             const searchQuery = this.value.toLowerCase();
             const productCards = document.querySelectorAll('.product-card');
