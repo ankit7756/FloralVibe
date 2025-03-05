@@ -91,7 +91,7 @@ exports.getProductById = async (req, res) => {
 
 exports.getDashboardStats = async (req, res) => {
     try {
-        const { Op } = require('sequelize'); // Ensure Op is available
+        const { Op } = require('sequelize');
         // Total Sales: Sum of product prices from all orders
         const totalSales = await Order.findAll({
             include: [{ model: Product, attributes: ['price'] }]

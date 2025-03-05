@@ -17,12 +17,12 @@ const Review = sequelize.define('Review', {
     userName: {
         type: DataTypes.STRING,
         allowNull: false,
-        defaultValue: 'Default User' // Add this line
+        defaultValue: 'Default User'
     },
     productName: {
         type: DataTypes.STRING,
         allowNull: false,
-        defaultValue: 'Default Product' // Add this line
+        defaultValue: 'Default Product'
     },
     rating: {
         type: DataTypes.INTEGER,

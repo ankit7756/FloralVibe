@@ -35,8 +35,7 @@ exports.createOrder = async (req, res) => {
             paymentMethod
         });
 
-        // Optional: Reduce stock (future enhancement)
-        // await product.update({ stockQuantity: product.stockQuantity - 1 });
+
 
         res.status(201).json({ message: 'Order placed successfully', order });
     } catch (error) {

@@ -4,7 +4,6 @@ const User = require('../models/userModel');
 
 exports.addToCart = async (req, res) => {
     try {
-        // const { productId, userId = 1 } = req.body; // Get userId from body or default to 1
         const { productId } = req.body;
         const userId = req.user.id; // Get userId from the authenticated user
 
