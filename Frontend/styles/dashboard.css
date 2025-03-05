@@ -551,7 +551,6 @@ body {
     border-radius: 10px;
     border: 2px solid #ff99cc;
     margin-bottom: 0;
-    /* Remove bottom margin to align with flex */
     transition: transform 0.3s ease;
 }
 
