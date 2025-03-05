@@ -108,7 +108,6 @@ document.addEventListener('DOMContentLoaded', async function () {
                     const data = await response.json();
                     if (response.ok) {
                         alert(data.message);
-                        // Refresh cart
                         const newResponse = await fetch('http://localhost:4000/api/cart', {
                             headers: {
                                 'Authorization': `Bearer ${token}`
