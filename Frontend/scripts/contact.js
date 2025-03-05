@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', async function () {
-    // Submit message
     const contactForm = document.getElementById('contactForm');
     if (!contactForm) {
         console.error('Contact form not found in DOM');
