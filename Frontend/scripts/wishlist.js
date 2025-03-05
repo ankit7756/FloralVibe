@@ -1,24 +1,18 @@
 document.addEventListener('DOMContentLoaded', async function () {
-    // CHANGED: Get authentication token from localStorage
     const token = localStorage.getItem('token');
 
-    // CHANGED: Check if token exists
     if (!token) {
-        // Redirect to login if no token
         window.location.href = '../pages/login.html';
         return;
     }
 
-    // Fetch wishlist items from API
     try {
-        // CHANGED: Include auth token in request headers
         const response = await fetch('http://localhost:4000/api/wishlist', {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
         });
 
-        // CHANGED: Handle unauthorized response
         if (response.status === 401) {
             alert('Session expired. Please login again.');
             localStorage.removeItem('token');
@@ -32,7 +26,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         console.error('Error fetching wishlist:', error);
     }
 
-    // Function to display wishlist items
     function displayWishlistItems(wishlistItems) {
         const wishlistItemsContainer = document.getElementById('wishlist-items');
         wishlistItemsContainer.innerHTML = '';
@@ -79,7 +72,6 @@ document.addEventListener('DOMContentLoaded', async function () {
             event.preventDefault();
             const userConfirmed = confirm("Are you sure you want to log out?");
             if (userConfirmed) {
-                // CHANGED: Clear token on logout
                 localStorage.removeItem('token');
                 window.location.href = "../pages/HomePage.html";
             } else {
