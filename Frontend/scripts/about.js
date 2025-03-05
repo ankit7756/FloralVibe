@@ -1,3 +1,4 @@
+// home page navigation
 document.getElementById('logout-btn').addEventListener('click', function () {
     const userConfirmed = confirm("Are you sure you want to log out?");
 
