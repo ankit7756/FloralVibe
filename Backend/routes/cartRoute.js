@@ -15,7 +15,6 @@ const router = express.Router();
 const cartController = require('../controllers/cartController');
 const verifyToken = require('../middleware/authUser');
 
-// Apply auth middleware to all cart routes
 router.post('/', verifyToken, cartController.addToCart);
 router.get('/', verifyToken, cartController.getCart);
 router.delete('/:id', verifyToken, cartController.removeFromCart);
