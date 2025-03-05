@@ -97,7 +97,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         console.warn('Mobile menu button not found');
     }
 
-    // Logout functionality
     const logoutBtn = document.getElementById('logout-btn');
     if (logoutBtn) {
         logoutBtn.addEventListener('click', function (event) {
