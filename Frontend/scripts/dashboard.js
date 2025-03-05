@@ -83,7 +83,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
     }
 
-    // Display recent products
     function displayRecentProducts(products) {
         const productContainer = document.querySelector('.product-container');
         productContainer.innerHTML = '';
