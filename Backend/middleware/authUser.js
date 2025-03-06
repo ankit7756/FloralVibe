@@ -10,7 +10,7 @@ const verifyToken = (req, res, next) => {
     try {
         const bearer = bearerHeader.split(' ');
         const token = bearer[1];
-        const decoded = jwt.verify(token, process.env.JWT_SECRET); // Use process.env.JWT_SECRET in production
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
         req.user = decoded;
         next();
     } catch (error) {
